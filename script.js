@@ -17,17 +17,24 @@ const createCardHTML = (pokemon) => {
     `;
 };
 
-pokemonArray.forEach((pokemon) => (cardContainer.innerHTML += createCardHTML(pokemon)));
+const renderCards = (array) => {
+  array.forEach((item) => (cardContainer.innerHTML += createCardHTML(item)));
+};
+
+renderCards(pokemonArray);
 
 // FILTER EVENT
 const handleFilterInput = (e) => {
   const searchTerm = e.target.value.toLowerCase();
+  console.log(searchTerm);
 
   const filteredItem = pokemonArray.filter((pokemon) => {
     return pokemon.name.toLowerCase().includes(searchTerm);
   });
 
-  createCardHTML(filteredItem);
+  console.log(filteredItem);
+
+  return filteredItem;
 };
 
 filterInput.addEventListener("input", handleFilterInput);
