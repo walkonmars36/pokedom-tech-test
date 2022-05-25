@@ -21,20 +21,22 @@ const renderCards = (array) => {
   array.forEach((item) => (cardContainer.innerHTML += createCardHTML(item)));
 };
 
-renderCards(pokemonArray);
+window.addEventListener("load", () => {
+  renderCards(pokemonArray);
+});
 
 // FILTER EVENT
 const handleFilterInput = (e) => {
   const searchTerm = e.target.value.toLowerCase();
   console.log(searchTerm);
 
-  const filteredItem = pokemonArray.filter((pokemon) => {
+  const filteredItems = pokemonArray.filter((pokemon) => {
     return pokemon.name.toLowerCase().includes(searchTerm);
   });
 
-  console.log(filteredItem);
+  console.log(filteredItems);
 
-  return filteredItem;
+  renderCards(filteredItems);
 };
 
 filterInput.addEventListener("input", handleFilterInput);
